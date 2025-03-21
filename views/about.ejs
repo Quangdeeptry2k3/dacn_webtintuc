@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= aboutData.title %></title>
+  <link rel="stylesheet" href="/news-styles.css">
+  <style>
+    /* Reset mặc định */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(45deg, #ff6f61, #ff9a8b);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #004c8c, #00b4d8);
+      color: white;
+      text-align: center;
+      padding: 3rem 5%;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 1200px;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Section */
+    section {
+      width: 80%;
+      max-width: 1000px;
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 3rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    section:hover {
+      transform: scale(1.03);
+    }
+
+    section p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      text-align: justify;
+      color: #333;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      color: #007bff;
+      margin-bottom: 25px;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    section ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    section ul li {
+      font-size: 1.3rem;
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f0f8ff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+
+    section ul li:hover {
+      background-color: #e0f7fa;
+    }
+
+    section ul li strong {
+      color: #0056b3;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 3%;
+      background-color: #333;
+      color: white;
+      width: 100%;
+      font-size: 1rem;
+      position: relative;
+      bottom: 0;
+      margin-top: 30px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* Nút Trở về trang chủ */
+    .back-home-btn {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      border-radius: 30px;
+      text-align: center;
+      margin-top: 30px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .back-home-btn:hover {
+      background-color: #0056b3;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1><%= aboutData.title %></h1>
+  </header>
+
+  <!-- About Section -->
+  <section>
+    <p><%= aboutData.description %></p>
+    <h2>Đội ngũ của chúng tôi</h2>
+    <ul>
+      <% aboutData.teamMembers.forEach(member => { %>
+        <li>
+          <strong><%= member.name %></strong> 
+          <span><%= member.role %></span>
+        </li>
+      <% }) %>
+    </ul>
+    <!-- Nút Trở về trang chủ -->
+    <a href="/news" class="back-home-btn">Trở về trang chủ</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 VNExpress. Tất cả quyền được bảo vệ.</p>
+  </footer>
+
+</body>
+</html>

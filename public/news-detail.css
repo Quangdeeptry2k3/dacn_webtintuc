@@ -1,0 +1,176 @@
+/* Định dạng chung */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #2b2b2b, #1a1a1a); /* Hiệu ứng nền gradient tối */
+  color: #ddd; /* Màu chữ nhạt */
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #4a4a4a, #282c34); /* Gradient header */
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+header h1 {
+  font-size: 1.8em;
+  margin: 0;
+}
+
+header nav a,
+header nav form button {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s;
+}
+
+header nav a:hover,
+header nav form button:hover {
+  background: #FFD700;
+  color: #333;
+}
+
+/* Phần nội dung bài viết */
+section {
+  margin: 30px auto;
+  padding: 30px;
+  max-width: 900px;
+  background: #f8f9fa; /* Nền sáng */
+  color: #333; /* Màu chữ chính */
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* Tiêu đề bài viết */
+.article-title {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2.5em;
+  color: #444;
+  font-weight: bold;
+}
+
+/* Hình ảnh trong bài viết */
+section img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Nút lưu bài viết */
+form button {
+  display: block;
+  background: #FFD700;
+  color: #333;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  margin: 20px auto;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+form button:hover {
+  background: #ffc107;
+  transform: translateY(-2px);
+}
+
+/* Thông báo lưu thành công */
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 900px;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.alert-success:hover {
+  transform: translateY(-5px);
+}
+
+/* Nút Trang chủ ở cuối bài viết */
+.home-button-container {
+  text-align: center;
+  margin: 30px auto;
+}
+
+.home-button {
+  display: inline-block;
+  background: #FFD700;
+  color: #333;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.home-button:hover {
+  background: #ffc107;
+  transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  background: #282c34;
+  color: #888;
+}
+
+footer a {
+  text-decoration: none;
+  color: #FFD700;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #ffc107;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  section {
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  .article-title {
+    font-size: 1.8em;
+  }
+
+  form button {
+    font-size: 1em;
+  }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Latest news from VNExpress. Stay updated with the latest headlines and articles.">
+  <title>Tin tức - VNExpress</title>
+  <link rel="stylesheet" href="/news-styles.css">
+</head>
+<body class="news-page">
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <a href="/" class="logo-link">
+        <img src="/images/logowebtintuc.png" alt="VNExpress Logo" class="logo-img">
+      </a>
+    </div>
+    <nav class="navbar">
+      <ul>
+        <% if (session && session.user) { %>
+          <li><a href="/auth/logout" class="navbar-link">Đăng xuất</a></li>
+          <% if (session.user.role === 'admin') { %>
+            <li><a href="/auth/admin" class="navbar-link">Quản lý trang web</a></li>
+          <% } %>
+        <% } else { %>
+          <li><a href="/auth/login" class="navbar-link">Đăng Nhập</a></li>
+        <% } %>
+        <li><a href="/news/saved" class="navbar-link">Bài Viết Đã Lưu</a></li>
+
+        <li><a href="/news/about" class="navbar-link">Giới Thiệu</a></li>
+        <li><a href="/news/contact" class="navbar-link">Liên Hệ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Banner -->
+  <section class="top-banner">
+    <h1 class="main-title">Tin Tức Mới Nhất</h1>
+    <p class="subtitle">Cập nhật thông tin nóng hổi, mới nhất từ VNEXPRESS</p>
+  </section>
+
+  <!-- Category Filter -->
+  <section class="category-filter">
+    <form method="get" action="/news">
+      <select name="category" aria-label="Chọn danh mục tin tức">
+        <option value="" <%= !category ? 'selected' : '' %>>Tất cả</option>
+        <option value="giai-tri" <%= category === 'giai-tri' ? 'selected' : '' %>>🎭 Giải trí</option>
+        <option value="the-thao" <%= category === 'the-thao' ? 'selected' : '' %>>⚽ Thể thao</option>
+        <option value="phap-luat" <%= category === 'phap-luat' ? 'selected' : '' %>>⚖️ Pháp luật</option>
+        <option value="giao-duc" <%= category === 'giao-duc' ? 'selected' : '' %>>📚 Giáo dục</option>
+        <option value="suc-khoe" <%= category === 'suc-khoe' ? 'selected' : '' %>>💊 Sức khỏe</option>
+      </select>
+      <button type="submit" aria-label="Lọc tin tức">Lọc</button>
+    </form>
+  </section>
+
+   <!-- News Section -->
+   <section class="news-container">
+    <% if (newsData && newsData.length > 0) { %>
+      <div class="news-grid">
+        <% newsData.forEach(news => { %>
+          <div class="news-card">
+            <% if (news.image) { %>
+              <img src="<%= news.image %>" alt="Image for <%= news.title %>" class="news-image">
+            <% } else { %>
+              <img src="/images/default-image.jpg" alt="Default Image" class="news-image">
+            <% } %>
+            <div class="news-details">
+              <h3><a href="/news/details/<%= news.id %>" class="news-title"><%= news.title %></a></h3>
+              <p class="news-description"><%= news.description %></p>
+              <a href="/news/details/<%= news.id %>" class="read-more-btn">Đọc thêm</a>
+              <% if (session && session.user) { %>
+                <button class="save-news-btn" data-news-id="<%= news.id %>">Lưu bài viết</button>
+              <% } else { %>
+                <button class="save-news-btn" disabled>Lưu bài viết</button>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <% if (prevPage) { %>
+          <a href="/news?page=<%= prevPage %>&category=<%= category %>" class="pagination-btn">Trước</a>
+        <% } else { %>
+          <span class="pagination-btn disabled">Trước</span>
+        <% } %>
+
+        <% for (let i = 1; i <= totalPages; i++) { %>
+          <% if (i === currentPage) { %>
+            <span class="pagination-btn active"><%= i %></span>
+          <% } else { %>
+            <a href="/news?page=<%= i %>&category=<%= category %>" class="pagination-btn"><%= i %></a>
+          <% } %>
+        <% } %>
+
+        <% if (nextPage) { %>
+          <a href="/news?page=<%= nextPage %>&category=<%= category %>" class="pagination-btn">Sau</a>
+        <% } else { %>
+          <span class="pagination-btn disabled">Sau</span>
+        <% } %>
+      </div>
+    <% } else { %>
+      <p>Không có bài viết nào trong danh mục này.</p>
+    <% } %>
+  </section>
+
+  <!-- Save News Script -->
+  <script src="/saveNews.js"></script>
+</body>
+</html>

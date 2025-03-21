@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit User</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #22D3EE, #1E40AF);
+      margin: 0;
+      padding: 0;
+      color: #F3F4F6;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 80px auto;
+      padding: 30px;
+      background-color: #2B2D42;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      color: #F59E0B;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      outline: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    input, select {
+      background-color: #F9FAFB;
+      color: #374151;
+    }
+
+    input:focus, select:focus {
+      background-color: #E5E7EB;
+    }
+
+    button {
+      background-color: #F59E0B;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #D97706;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Edit User</h2>
+    <% if (successMessage) { %>
+      <div class="success-message"><%= successMessage %></div>
+    <% } %>
+
+    <form action="/auth/admin/edit/<%= user.id %>" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" value="<%= user.username %>" required />
+
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" placeholder="Leave blank to keep current password" />
+
+      <label for="role">Role:</label>
+      <select name="role" id="role">
+        <option value="user" <%= user.role === 'user' ? 'selected' : '' %>>User</option>
+        <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>Admin</option>
+      </select>
+
+      <button type="submit">Update User</button>
+    </form>
+  </div>
+</body>
+</html>

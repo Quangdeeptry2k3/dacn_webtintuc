@@ -1,0 +1,36 @@
+<!-- views/createNews.ejs -->
+<form id="createArticleForm">
+  <label for="title">Tiêu đề bài viết</label>
+  <input type="text" id="title" name="title" required>
+
+  <label for="content">Nội dung bài viết</label>
+  <textarea id="content" name="content" required></textarea>
+
+  <label for="image">Link hình ảnh</label>
+  <input type="text" id="image" name="image">
+
+  <button type="submit">Lưu bài viết</button>
+</form>
+
+<script>
+  // JavaScript để gửi dữ liệu từ form
+  document.getElementById('createArticleForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+    const image = document.getElementById('image').value;
+    const userId = '<%= session && session.user ? session.user._id : "" %>';  // Lấy userId từ session
+
+    fetch('/api/user-article/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title, content, image, userId })
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => alert('Lỗi khi lưu bài viết: ' + error.message));
+  });
+</script>

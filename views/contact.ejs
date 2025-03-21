@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= contactData.title %></title>
+  <link rel="stylesheet" href="/news-styles.css">
+  <style>
+    /* Reset mặc định */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Nền Gradient động */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff4e50, #f9d423);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite; /* Nền gradient động */
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Header */
+    header {
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 36px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      border-radius: 15px;
+      text-transform: uppercase;
+      width: 90%;
+      max-width: 900px;
+    }
+
+    /* Section chính */
+    section {
+      width: 90%;
+      max-width: 900px;
+      padding: 30px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      margin-top: 40px;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .contact-info {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .contact-info li {
+      background-color: #f1f1f1;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-info li:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-info i {
+      font-size: 30px;
+      color: #1a73e8;
+      margin-right: 15px;
+    }
+
+    .contact-info a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Back button */
+    .back-home {
+      display: inline-block;
+      background-color: #1a73e8;
+      color: white;
+      padding: 12px 30px;
+      margin-top: 30px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 18px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .back-home:hover {
+      background-color: #1558b0;
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 14px;
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      header {
+        font-size: 28px;
+        padding: 20px 0;
+      }
+
+      section {
+        padding: 20px;
+        max-width: 100%;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .contact-info li {
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      .back-home {
+        font-size: 16px;
+        padding: 10px 25px;
+      }
+    }
+  </style>
+  <!-- Thêm thư viện icon FontAwesome cho các icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1><%= contactData.title %></h1>
+  </header>
+
+  <!-- Contact Information -->
+  <section>
+    <h2>Thông Tin Liên Hệ</h2>
+    <ul class="contact-info">
+      <li><i class="fab fa-facebook-f"></i><strong>Facebook:</strong> <a href="<%= contactData.facebook %>" target="_blank">Tran Tien Giang</a></li>
+      <!-- Zalo với icon Zalo -->
+      <li><i class="fab fa-whatsapp"></i><strong>Zalo:</strong> <a href="<%= contactData.zalo %>" target="_blank">Trần Tiến Giang</a></li>
+      <li><i class="fas fa-envelope"></i><strong>Email:</strong> <a href="mailto:<%= contactData.email %>"><%= contactData.email %></a></li>
+      <li><i class="fas fa-phone-alt"></i><strong>Số điện thoại:</strong> <%= contactData.phone %></li>
+    </ul>
+
+    <!-- Back to Home -->
+    <a href="/news" class="back-home">Trở về trang chủ</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 VNExpress. Tất cả quyền được bảo vệ.</p>
+  </footer>
+
+</body>
+</html>

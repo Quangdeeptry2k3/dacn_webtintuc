@@ -1,0 +1,179 @@
+/* Reset margin và padding cho tất cả các phần tử */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Định dạng cho body */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom right, #f4f4f9, #e0e0e0); /* Gradient nền */
+}
+
+/* Cấu trúc tiêu đề */
+h1, h2 {
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 3em;
+  color: #1e90ff; /* Màu cho tiêu đề */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng bóng cho tiêu đề */
+}
+
+h2 {
+  font-size: 1.8em;
+  color: #333; /* Màu cho phụ đề */
+}
+
+/* Định dạng container cho các phần tử */
+.container {
+  width: 100%;
+  max-width: 500px; /* Giới hạn chiều rộng để giữ form không quá rộng */
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px; /* Bo góc để mềm mại hơn */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ cho phần form */
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Các nút Đăng nhập, Đăng ký */
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 15px 30px;
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+  background-color: #1e90ff;
+}
+
+.btn-primary:hover {
+  background-color: #4169e1;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4); /* Hiệu ứng bóng khi hover */
+}
+
+.btn-secondary {
+  background-color: #4caf50;
+}
+
+.btn-secondary:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4); /* Hiệu ứng bóng khi hover */
+}
+
+/* Các input trường nhập */
+.input-group {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #1e90ff;
+  outline: none;
+}
+
+/* Thông báo lỗi và thành công */
+.error-message, .success-message {
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
+
+.error-message {
+  background-color: #ff6b6b;
+}
+
+.success-message {
+  background-color: #4caf50;
+}
+
+/* Định dạng footer */
+footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #777;
+}
+
+footer p {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 20px;
+    max-width: 100%;
+  }
+}
+/* Cập nhật container */
+.container {
+  padding: 40px; /* Tăng padding */
+  border-radius: 15px; /* Bo góc mềm mại hơn */
+}
+
+/* Hover hiệu ứng nút */
+.btn-primary:hover, .btn-secondary:hover {
+  transform: scale(1.03); /* Giảm phóng to */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng mềm hơn */
+}
+
+/* Cập nhật tiêu đề chính */
+h1 {
+  font-size: 3em;
+  background: linear-gradient(to right, #1e90ff, #4169e1);
+  -webkit-background-clip: text; /* Hiệu ứng chỉ lấy phần màu */
+  color: transparent; /* Để hiện hiệu ứng gradient */
+  text-shadow: none; /* Loại bỏ bóng chữ */
+}

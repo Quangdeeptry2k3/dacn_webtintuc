@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #1E40AF, #22D3EE);
+      margin: 0;
+      padding: 0;
+      color: #F3F4F6;
+      line-height: 1.6;
+    }
+
+    .container {
+      margin: 40px auto;
+      padding: 25px;
+      max-width: 1000px;
+      background: #2B2D42;
+      border-radius: 10px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #F59E0B;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      margin-bottom: 15px;
+      background: #4C51BF;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      background: #5A67D8;
+    }
+
+    li span {
+      font-size: 16px;
+      color: #F9FAFB;
+      font-weight: bold;
+    }
+
+    form {
+      display: inline;
+    }
+
+    select, input, button {
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      border: none;
+      outline: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    select, input {
+      background: #E5E7EB;
+      color: #374151;
+    }
+
+    select:hover, input:hover {
+      background: #D1D5DB;
+    }
+
+    button {
+      background: #F59E0B;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background: #D97706;
+      transform: scale(1.1);
+    }
+
+    a {
+      color: #F59E0B;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    a:hover {
+      color: #D97706;
+      transform: translateX(5px);
+    }
+
+    .add-user-form {
+      margin-top: 30px;
+      background: #2B2D42;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .add-user-form:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .add-user-form input, .add-user-form select {
+      margin-bottom: 20px;
+      width: calc(100% - 24px);
+    }
+
+    .add-user-form button {
+      width: 100%;
+      background: #38B2AC;
+      color: white;
+      font-size: 16px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .add-user-form button:hover {
+      background: #319795;
+      transform: scale(1.05);
+    }
+
+    .search-form {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .search-form input {
+      width: 70%;
+      padding: 12px;
+      background: #F9FAFB;
+      color: #374151;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .search-form input:focus {
+      background: #E5E7EB;
+    }
+
+    .search-form button {
+      padding: 12px 25px;
+      margin-left: 10px;
+      background: #F59E0B;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .search-form button:hover {
+      background: #D97706;
+    }
+
+    /* Nút Quay về Trang Chủ */
+    .back-home {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .btn-home {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #F59E0B;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-home:hover {
+      background: #D97706;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hiển thị thông báo lỗi nếu có -->
+    <% if (errorMessage) { %>
+      <div class="alert alert-danger"><%= errorMessage %></div>
+    <% } %>
+
+    <!-- Nút Quay về Trang Chủ -->
+    <div class="back-home">
+      <a href="/news" class="btn-home">← Quay về Trang Chủ</a>
+    </div>
+
+    <h1>Welcome, <%= userSession.username %>!</h1>
+
+    <!-- Form tìm kiếm người dùng -->
+    <div class="search-form">
+      <form action="/auth/admin" method="GET">
+        <input type="text" name="search" placeholder="Search users by username" value="<%= searchQuery %>" />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <h2>User List</h2>
+    <ul>
+      <% users.forEach(user => { %>
+        <li>
+          <span><%= user.username %> - Role: <%= user.role %></span>
+
+          <!-- Form to change user role -->
+          <form action="/auth/admin/role/<%= user.id %>" method="POST">
+            <select name="role">
+              <option value="user" <%= user.role === 'user' ? 'selected' : '' %>>User</option>
+              <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>Admin</option>
+            </select>
+            <button type="submit">Change</button>
+          </form>
+    
+          <!-- Link to edit user -->
+          <a href="/auth/admin/edit/<%= user.id %>">Edit</a>
+
+          <!-- Link to delete user -->
+          <a href="/auth/admin/delete/<%= user.id %>" style="color: #F87171;">Delete</a>
+        </li>
+      <% }); %>
+    </ul>
+    
+    <% if (successMessage) { %>
+      <div class="alert alert-success"><%= successMessage %></div>
+    <% } %>
+
+    <h2>Add New User</h2>
+    <form action="/auth/admin/add" method="POST" class="add-user-form">
+      <input type="text" name="username" placeholder="Username" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <select name="role">
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button type="submit">Add User</button>
+    </form>
+  </div>
+</body>
+</html>

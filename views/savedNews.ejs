@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài viết đã lưu</title>
+  <link rel="stylesheet" href="/savednews.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="/">Bài Viết Đã Lưu</a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/news">Trang chủ</a></li>
+        <li><a href="/news/saved">Bài viết đã lưu</a></li>
+        <li><a href="/auth/logout">Đăng xuất</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="saved-news-container">
+    <h1>Bài viết bạn đã lưu</h1>
+    <% if (news.length === 0) { %>
+      <p>Không có bài viết nào trong danh sách đã lưu.</p>
+    <% } else { %>
+      <ul class="saved-news-list">
+        <% news.forEach(newsItem => { %>
+          <li class="news-item" id="article-<%= newsItem.id %>">
+            <div class="news-header">
+              <% if (newsItem.image) { %>
+                <img src="<%= newsItem.image %>" alt="Hình ảnh bài viết" class="news-image">
+              <% } %>
+              <div class="news-title">
+                <h3><%= newsItem.title %></h3>
+              </div>
+            </div>
+            <div class="news-content">
+              <p><%= newsItem.content.substring(0, 100) %>...</p>
+            </div>
+            <div class="news-actions">
+              <a href="/saved/<%= newsItem.id %>" class="read-more-btn">Xem thêm</a>
+              <button class="delete-btn" data-news-id="<%= newsItem.id %>">Xóa</button>
+            </div>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </div>
+
+  <!-- Phân trang -->
+  <div class="pagination">
+    <% if (currentPage > 1) { %>
+      <a href="/news/saved?page=<%= currentPage - 1 %>" class="prev-page">Trang trước</a>
+    <% } %>
+    <span>Trang <%= currentPage %> / <%= totalPages %></span>
+    <% if (currentPage < totalPages) { %>
+      <a href="/news/saved?page=<%= currentPage + 1 %>" class="next-page">Trang sau</a>
+    <% } %>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Tin tức. Tất cả quyền lợi được bảo lưu.</p>
+  </footer>
+
+  <!-- Liên kết đến file JavaScript ngoài -->
+  <script src="/saveNews.js"></script>
+</body>
+</html>
+
+
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    header .logo a {
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .saved-news-container {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .saved-news-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .news-item {
+      background-color: white;
+      margin: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: calc(33% - 20px);
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    .news-item .news-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .news-item .news-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 15px;
+      border-radius: 5px;
+    }
+
+    .news-title h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .news-content p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .news-actions {
+      margin-top: 10px;
+    }
+
+    .read-more-btn {
+      color: #007bff;
+      text-decoration: none;
+      margin-right: 15px;
+    }
+
+    .delete-btn {
+      padding: 5px 15px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: #d32f2f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #333;
+      color: white;
+      margin-top: 30px;
+    }
+
+    /* Phân trang */
+    .pagination {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .pagination a {
+      padding: 8px 16px;
+      margin: 0 10px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .pagination a:hover {
+      background-color: #0056b3;
+    }
+
+    .pagination span {
+      padding: 8px 16px;
+      font-weight: bold;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .news-item {
+        width: calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .news-item {
+        width: 100%;
+      }
+    }
+  </style>
+

@@ -1,0 +1,30 @@
+<!-- views/newsList.ejs -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài viết đã lưu</title>
+  <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+  <% if (session && session.user) { %>
+    <h1>Bài viết đã lưu</h1>
+    <% if (savedArticles.length === 0) { %>
+      <p>Không có bài viết nào đã lưu.</p>
+    <% } else { %>
+      <ul>
+        <% savedArticles.forEach(article => { %>
+          <li>
+            <h3><%= article.title %></h3>
+            <p><%= article.description %></p>
+            <a href="<%= article.link %>" target="_blank">Đọc thêm</a>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+  <% } else { %>
+    <p>Bạn cần đăng nhập để xem các bài viết đã lưu.</p>
+  <% } %>
+</body>
+</html>

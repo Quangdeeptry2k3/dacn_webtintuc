@@ -1,0 +1,315 @@
+/* Toàn bộ trang tin tức */
+.news-page {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+.news-page .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; /* Giảm padding */
+  background-color: white;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.news-page .logo-link {
+  display: inline-block;
+}
+
+.news-page .logo-img {
+  width: 120px; /* Giảm kích thước logo */
+  height: auto; /* Đảm bảo tỷ lệ hình ảnh */
+}
+
+.news-page .navbar {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.news-page .navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Giảm khoảng cách giữa các item */
+}
+
+/* Làm nổi bật các liên kết trong menu */
+.news-page .navbar-link {
+  font-size: 16px; /* Giảm kích thước chữ */
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  padding: 8px 12px; /* Giảm padding */
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.news-page .navbar-link:hover {
+  background-color: #ffdd57;
+  color: #333;
+  transform: scale(1.05); /* Giảm hiệu ứng phóng to */
+}
+
+.news-page .navbar-link.active {
+  border-bottom: 3px solid #ffdd57;
+}
+
+.news-page .logout-btn {
+  font-size: 14px; /* Giảm kích thước chữ */
+  font-weight: bold;
+  padding: 8px 12px; /* Giảm padding */
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #ff6600;
+  color: white;
+  border-radius: 5px;
+}
+
+.news-page .logout-btn:hover {
+  background-color: #ff4500;
+}
+
+/* Top Banner */
+.news-page .top-banner {
+  background-color: white;
+  color: #333;
+  text-align: center;
+  padding: 30px 20px; /* Giảm padding */
+  position: relative;
+}
+
+.news-page .top-banner .top-banner-img {
+  width: 100%;
+  height: 200px; /* Adjust the height as needed */
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.news-page .main-title {
+  font-size: 2.5em; /* Giảm kích thước chữ */
+  font-weight: bold;
+}
+
+.news-page .subtitle {
+  font-size: 1.1em; /* Giảm kích thước chữ */
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+/* Lọc bài viết */
+.category-filter {
+  padding: 20px 30px;
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 30px;
+}
+
+.category-filter form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.category-filter select {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #1e90ff;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.category-filter select:focus {
+  border-color: #4169e1;
+  outline: none;
+}
+
+.category-filter button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #1e90ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.category-filter button:hover {
+  background-color: #4169e1;
+  transform: scale(1.05);
+}
+
+/* News Grid */
+.news-page .news-container {
+  padding: 40px 30px;
+}
+
+.news-page .news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.news-page .news-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-page .news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Cập nhật phần hiển thị hình ảnh */
+.news-page .news-image {
+  width: 100%;
+  height: 168px;
+  object-fit: cover;
+}
+
+/* News Details */
+.news-page .news-details {
+  padding: 20px;
+}
+
+.news-page .news-title {
+  font-size: 1.7em;
+  margin-bottom: 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.news-page .news-title:hover {
+  color: #1e90ff;
+}
+
+.news-page .news-description {
+  font-size: 1.1em;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.news-page .read-more-btn {
+  color: #1e90ff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.news-page .read-more-btn:hover {
+  color: #4169e1;
+  text-decoration: underline;
+}
+
+/* Phân trang */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.pagination-btn {
+  padding: 10px 20px;
+  background-color: #1e90ff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: background-color 0.3s;
+}
+
+.pagination-btn:hover {
+  background-color: #4169e1;
+}
+
+.pagination-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-text {
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* Footer */
+.news-page .footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 50px;
+}
+
+.news-page .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.news-page .footer-links {
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+.news-page .footer-links li {
+  display: inline;
+  margin-left: 20px;
+}
+
+.news-page .footer-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.news-page .footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Điều chỉnh hover của news-card */
+.news-page .news-card:hover {
+  transform: translateY(-3px); /* Giảm khoảng cách hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Bộ lọc danh mục */
+.category-filter {
+  padding: 25px 30px; /* Thêm khoảng cách lớn hơn */
+  background-color: #f7f7f7; /* Màu trung tính hơn */
+  border-bottom: 3px solid #ddd;
+  border-radius: 8px; /* Bo góc nhẹ */
+}
+
+/* Responsive lưới tin tức */
+@media (max-width: 600px) {
+  .news-page .news-grid {
+    grid-template-columns: 1fr; /* Chuyển sang 1 cột */
+    gap: 15px;
+  }
+}
+
+/* Header - thêm phân cách */
+.news-page .header {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Footer - bo góc thêm mềm mại */
+.news-page .footer {
+  border-radius: 15px 15px 0 0;
+}

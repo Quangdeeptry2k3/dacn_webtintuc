@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= article.title %></title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="/">Trang chủ</a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/news">Trang chủ</a></li>
+        <li><a href="/news/saved">Bài viết đã lưu</a></li>
+        <li><a href="/auth/logout">Đăng xuất</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="saved-news-container">
+    <h1><%= article.title %></h1>
+    <div class="news-detail">
+      <!-- Kiểm tra xem có ảnh không -->
+      <% if (article.image) { %>
+        <img src="/images/<%= article.image %>" alt="Hình ảnh bài viết" class="news-image">
+      <% } else { %>
+        <p>Không có hình ảnh cho bài viết này.</p>
+      <% } %>
+
+      <!-- Kiểm tra xem có nội dung không -->
+      <% if (article.content) { %>
+        <p><%= article.content %></p>
+      <% } else { %>
+        <p>Không có nội dung cho bài viết này.</p>
+      <% } %>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Tin tức. Tất cả quyền lợi được bảo lưu.</p>
+  </footer>
+</body>
+</html>

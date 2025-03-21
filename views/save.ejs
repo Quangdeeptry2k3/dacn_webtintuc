@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lưu bài viết</title>
+  <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="/">Trang Chủ</a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/news">Trang chủ</a></li>
+        <li><a href="/news/saved">Bài viết đã lưu</a></li>
+        <li><a href="/auth/logout">Đăng xuất</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="message-container">
+    <h1><%= message %></h1> <!-- Hiển thị thông báo thành công -->
+    <a href="/news" class="btn">Quay lại trang chủ</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Tin tức. Tất cả quyền lợi được bảo lưu.</p>
+  </footer>
+</body>
+</html>
